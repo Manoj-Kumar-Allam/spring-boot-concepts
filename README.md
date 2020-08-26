@@ -1,2 +1,3 @@
-# spring-dependency-injection
-To understand Spring Dependency Injection
+# spring-boot-concepts
+To understand Spring Boot Concepts
+1. Dependency Injection
