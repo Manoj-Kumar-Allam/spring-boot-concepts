@@ -1,0 +1,178 @@
+*****************************************************Dependency Injection*******************************************************
+**********************************************************************************************************************************Dependency Injection and Inversion of Control -:
+********************************************************************************************************************************
+IOC Container is implemented based on Factory pattern, Dependency Injection Prnciple and Strategy pattern.
+
+By using Strategy pattern., we can change the object behaviour. i.e., if we are using any strategy object as depedency, we can change the behaviour at run time.
+
+IOC will make classes to be lossely coupled. we can implement IOC by using Factory Pattern.
+
+As the name suggests, it is used to invert different kinds of controls in object-oriented design to achieve loose coupling. Here, controls refer to any additional responsibilities a class has, other than its main responsibility. This include control over the flow of an application, and control over the flow of an object creation or dependent object creation and binding
+
+The IoC principle helps in designing loosely coupled classes which make them testable, maintainable and extensible
+
+Example -:
+**************
+
+public class A
+{
+    B b;
+
+    public A()
+    {
+        b = Factory.GetObjectOfB ();
+    }
+
+    public void Task1() {
+        // do something here..
+        b.SomeMethod();
+        // do something here..
+    }
+}
+
+public class Factory
+{
+    public static B GetObjectOfB() 
+    {
+        return new B();
+    }
+}
+
+********************************************************************************************************************************
+Spring has a Application Context or Spring Context which will manage the Components and Spring Beans. Spring will create instances of those and put into the context and manage them.
+
+if we don't specify any name to the Stereotype annotations, Spring context will store the name in camel case                  i.e MyController -> myController
+
+SpringApplication.run(SpringDependencyInjectionApplication.class, args) will return ApplicationContext
+
+Inversion of Control -: (Spring is taking control to declare resources)
+1. Here IOC Container taking over control from the classes to have the resources on it's own instead the container takes the control and inject the required dependencies to the classes.
+2. Dependencies are not pre-determined. They will get injected at runtime into the classes
+
+We can dependency injection through properties, setter method and constructor. Constructor is the most preferred one.
+
+If we have any dependency which the Application Context couldn't able to find at run time, then error will be thrown and stop the program from starting up.
+
+1.1@Autowired annotation will tell spring that to inject that particular instance from where it's been declared
+1.2 Incase of interface declaration having @Autowired annotation, if the implemented class not annotated with stereo type annotation like @Component and @Service then it will throw exception saying that the instance of interface declration not found.
+
+Incase of setter injection for bean get injected we have to declare @Autowired annotation above the set method.
+Incase of constructor Injection declaring @Autowired is optional
+
+When we have multiple implementations for one interface, then we need to use @Qualifier on the candidate object i.e., the class which is asking injection of that, to choose which implementation to use. Otherwise we will get error saying that multiple instances available.
+
+the other option is use @Primary annotation, if we have multiple implementations and one them is declared with @Primary annotation, we won't get any exception. it will consider the implemenation declared with @Primary.
+
+if we declare @Qualifier on the candidate object it will take precedence over the primary bean
+
+Profiles -:
+
+Spring Profiles will allow us to control the application in different runtime environments.
+
+By using Profile we can control the spring context as to which one of these two beans gets loaded into context at runtime.
+
+When you have 2 beans with same Qualifier name, then spring will give conflict exception. Inorder to avoid that we use profile annotation
+
+we need to set @Profile on each of the bean and give names to them and in the application prop file we can set which of those profile to be active by using spring.profile.active.
+
+we can set default as to the profile(we can give more than one profile name in the profile annotaion) , in this we don't need set any spring.profile.active in application.prop file.
+
+but if we don't set we have mention spring.profile.active in application.prop file, otherwise we will get exception.
+@Profile({"EN", "default"})
+
+Profile names are case sensitive
+
+***************************************************Bean Life Cycle*************************************************************
+*******************************************************************************************************************************
+
+
+Callback Interfaces -:Spring has 2 interfaces we can implement for call back events
+
+InitializingBean and DisposableBean are callback interfaces
+
+1.InitializingBean.afterPropertiesSet()
+called after properties set
+2.DisposableBean.destroy()
+Called during bean destruction in shutdown
+
+Spring has 2 annotations you can use to hook into the bean life cycle
+
+@PostConstruct annotated methods will be called after the beans has been constructed, but before it returns to the requesting object
+
+@PreDestroy is called just before the bean is destroyed by the Container.
+
+
+BeanPostProcessors interface : it will gives you a mean to tap into the spring context life cycle and interact with the beans as they are processed.
+
+postProcessBeforeInitialization - called before initialization method
+postProcessAfterInitialization - called after bean initialization 
+
+********************************************************************************************************************************
+
+
+Interface Naming Conventions -:
+********************************************************************************************************************************
+1. Always give some specific name to the interface with staeting with letter i infront of it
+2. You can give interface name + impl to its implemented class if it is going to be the only implementation. if there are more you need to give distinct names
+
+Multi-Module-Project -:
+******************************************************************************************************************************
+1.Construct the individual projects and give <parent> project under which this project has to be managed
+<parent>
+		<groupId>com.ma</groupId>
+		<artifactId>spring-pet-clinic</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+</parent>
+
+2. Declare this module name is <modules> tag in parent project
+<modules>
+		<module>pet-clinic-data</module>
+		<module>pet-clinic-web</module>
+</modules>
+
+3. make parent project packaging as pom as it is not maintaining any thing technical.
+
+***********************************************Spring Configurations************************************************************
+********************************************************************************************************************************
+
+1.XML Schema is very important for XML Bsed Configurations. XML based Configurations was introduced in spring 2.0 version
+2.Annotation Based Configurations introduced in spring 3.0. They are picked via Component Scans.
+3.Annotation Based Configurations refers to class level annotations.
+
+Spring Framework will scan public methods which are marked with @Bean Annotation for the classes which have @Configuration annotation defined on it.
+
+DSL - Domain Specific Language
+
+
+@Repository-: The classes which are marked with @Repository tag will have an abstraction layer on the actual databases.
+Spring will have generate it's own exception by catching the underlying database exception. In this way spring will handle the exceptions of different databases.
+This additional exception handling will make @Repository different from other annotations.
+
+The stereo type annotations are almost same but they come with different intent. i.e., Where to use
+
+Component Scan -:
+**************************
+Component Scan is a way for spring to look at your package structure and determine or find spring beans in that.
+By Default @SpringBootApplication will do a component scan of the package containing that main class and the sub-packages.
+if we declare componentScan in the main class, we are overriding the behavior and spring will no longer have the default package scan.
+
+The XML configurations are going to made available to us inside of the Spring Context on the class path. Java will load them up on the classpath
+
+The resources folder is going to get packaged into the jar and it's going to be available for us at runtime.
+
+After Defining the Beans as below
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean name="ChuckNorrisQuotes" class = "guru.springframework.norris.chuck.ChuckNorrisQuotes"></bean>
+</beans>
+
+we need to we need to use annotation @ImportResource("classpath : chunk-config.xml"), This is telling Spring to search for the classPath for the file chunk-config.xml
+
+****************************Spring Factory Beans***********************************************
+
+
+
+
+	
