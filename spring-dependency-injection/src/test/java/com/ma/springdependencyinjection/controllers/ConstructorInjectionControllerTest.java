@@ -1,12 +1,13 @@
 package com.ma.springdependencyinjection.controllers;
 
-import org.junit.*;
+import static org.junit.Assert.assertNotNull;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
+import com.ma.springdependencyinjection.service.GreetingService;
 import com.ma.springdependencyinjection.service.impl.ConstructorInjectedServiceImpl;
-import com.ma.springdependencyinjection.service.impl.GreetingService;
-
-import static org.junit.Assert.*;
 
 /**
  * The class <code>ConstructorInjectionControllerTest</code> contains tests for the class <code>{@link ConstructorInjectionController}</code>.

@@ -3,7 +3,6 @@ package com.ma.springdependencyinjection;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.ComponentScan;
 
 import com.ma.springdependencyinjection.controllers.ConstructorInjectionController;
 import com.ma.springdependencyinjection.controllers.I18nController;
