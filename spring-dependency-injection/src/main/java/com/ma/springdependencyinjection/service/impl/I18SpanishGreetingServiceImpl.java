@@ -1,7 +1,9 @@
-package com.ma.componentscan;
+package com.ma.springdependencyinjection.service.impl;
 
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+
+import com.ma.springdependencyinjection.service.GreetingService;
 
 @Profile(value = "ES")
 @Service(value = "i18nService")

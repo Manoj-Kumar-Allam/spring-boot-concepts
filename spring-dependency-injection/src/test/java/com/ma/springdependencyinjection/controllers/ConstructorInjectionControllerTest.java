@@ -3,10 +3,10 @@ package com.ma.springdependencyinjection.controllers;
 import org.junit.*;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import com.ma.springdependencyinjection.service.impl.ConstructorInjectedServiceImpl;
+import com.ma.springdependencyinjection.service.impl.GreetingService;
 
-import com.ma.componentscan.ConstructorInjectedServiceImpl;
-import com.ma.componentscan.GreetingService;
+import static org.junit.Assert.*;
 
 /**
  * The class <code>ConstructorInjectionControllerTest</code> contains tests for the class <code>{@link ConstructorInjectionController}</code>.

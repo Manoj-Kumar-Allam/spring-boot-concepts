@@ -1,4 +1,4 @@
-package com.ma.componentscan;
+package com.ma.springdependencyinjection.service.impl;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

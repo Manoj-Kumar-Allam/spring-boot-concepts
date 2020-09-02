@@ -1,7 +1,9 @@
-package com.ma.componentscan;
+package com.ma.springdependencyinjection.service.impl;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
+
+import com.ma.springdependencyinjection.service.GreetingService;
 
 @Primary
 @Service

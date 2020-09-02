@@ -12,7 +12,7 @@ import com.ma.springdependencyinjection.controllers.PropertyInjectionController;
 import com.ma.springdependencyinjection.controllers.SetterInjectionController;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.ma.componentscan", "com.ma.springdependencyinjection"})
+//@ComponentScan(basePackages = {"com.ma.componentscan", "com.ma.springdependencyinjection"})
 public class SpringDependencyInjectionApplication {
 
 	public static void main(String[] args) {

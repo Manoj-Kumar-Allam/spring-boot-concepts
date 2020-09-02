@@ -1,4 +1,4 @@
-package com.ma.componentscan;
+package com.ma.springdependencyinjection.service.impl;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
