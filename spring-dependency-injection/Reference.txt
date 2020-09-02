@@ -172,7 +172,6 @@ we need to we need to use annotation @ImportResource("classpath : chunk-config.x
 
 ****************************Spring Factory Beans***********************************************
 
+1. It is used for more complex object for something database connection or connection to message broker where you have some complex configuration.
 
-
-
-	
+2. By following this approach we can have all the bean config at one place. the readbility increase
