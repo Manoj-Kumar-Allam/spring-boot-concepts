@@ -175,3 +175,9 @@ we need to we need to use annotation @ImportResource("classpath : chunk-config.x
 1. It is used for more complex object for something database connection or connection to message broker where you have some complex configuration.
 
 2. By following this approach we can have all the bean config at one place. the readbility increase
+*******************************************************************************************************************************
+
+mvn spring-boot:help -Ddetail=true, will provide all the available options that we can use with the maven defininf POM
+
+mvn spring-boot:run -Dspring-boot.run.arguments=--debug
+
