@@ -181,3 +181,89 @@ mvn spring-boot:help -Ddetail=true, will provide all the available options that 
 
 mvn spring-boot:run -Dspring-boot.run.arguments=--debug
 
+*****************************************7 Spring Bean Scope*******************************************************************
+1. Singleton
+2. Prototype
+3. Request
+4. Session
+5. Global Session
+6. Application -> hooks to Servlet Context
+7. Web Socket -> Hooks to the Web-socket life cycle
+
+Singleton and prototype can not be overridden.
+
+*****************************************************Property Source***********************************************************
+1. PropertySourcesPlaceholderConfigurer, it's going to be read the file for us.
+2. we need to define @PropertySource("classpath:datasource.properties") to tell where the prop file resides
+3. @Value("${ma.user}") it will retrive the value from prop file by using Spring Expression Language.
+
+Environment-:
+*************************************************************************************************************
+We can access the Environment variables using Environment class. it will overirde the parameters specified in prop file, if they are same.
+One more usecase is when we don't have access to the specific envs, Environment variables is the way to specify those external properties
+
+Multiple Propertie Files -:
+********************************************
+We can declare multiple property files by using
+@PropertySources({
+	@PropertySource("classpath:datasource.properties"),
+	@PropertySource("classpath:jms.properties")
+})
+
+or
+
+@PropertySource({"classpath:datasource.properties", "classpath:jms.properties"})
+
+Application.properties file -:
+**************************************************************************************************************
+1. Be default spring will read the application.properties file. So we don't need to specify @PropertySource and PropertySourcesPlaceholderConfigurer.
+2. We can specify both spring specific as well as custom properties in that file.
+
+YAML File -:
+****************************************************************************************
+
+YAML Ain't markup language, more suited towards data structures
+
+# this is a comment
+
+name: Manoj
+
+#list
+names: #Comment
+  - John
+  - Paul
+  - Bush
+
+pound_sign: "#"
+
+# Complex Objects
+book:
+  author: Manoj
+  publisher: vgs
+  
+# Boolean types (true, True, yes all are going to be evaluated as true)
+truth: yes
+more_truth: True;
+trust: true
+
+#false, False, no all going to be evaluated as false
+negative: false
+
+#when you special characters in string like ' or : you need wrap values in ""
+
+name_string: "Manoj Kumar's Book"
+
+#when you want include new line in between the sentences use |
+include_new_line: |
+  I am manoj
+  kumar
+  allam
+
+#when you don't want include new line in between the sentences use >
+discard_new_line: >
+  I am a 
+  single 
+  line
+
+Please find Sample configurations
+

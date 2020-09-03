@@ -18,7 +18,7 @@ public class SpringDIConfig {
 	
 	@Bean
 	@Primary
-	@Profile({"EN"})
+	@Profile({"EN", "default"})
 	GreetingService primaryGreetingService(GreetingServiceFactory greetingServiceFactory) {
 		return greetingServiceFactory.createGreetingService("EN"); 
 	}

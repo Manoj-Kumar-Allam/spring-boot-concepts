@@ -1,5 +1,7 @@
 package com.ma.springdependencyinjection;
 
+import java.util.Properties;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -9,6 +11,8 @@ import com.ma.springdependencyinjection.controllers.I18nController;
 import com.ma.springdependencyinjection.controllers.MyController;
 import com.ma.springdependencyinjection.controllers.PropertyInjectionController;
 import com.ma.springdependencyinjection.controllers.SetterInjectionController;
+import com.ma.springdependencyinjection.examplebeans.FakeDataSource;
+import com.ma.springdependencyinjection.examplebeans.FakeJMSBroker;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = {"com.ma.componentscan", "com.ma.springdependencyinjection"})
@@ -35,6 +39,17 @@ public class SpringDependencyInjectionApplication {
 		
 		ConstructorInjectionController constructorInjectionController = (ConstructorInjectionController) applicationContext.getBean("constructorInjectionController");
 		constructorInjectionController.printGretting();
+		
+		FakeDataSource fakeDataSource = applicationContext.getBean(FakeDataSource.class);
+		System.out.println(fakeDataSource.getUser());
+		System.out.println(fakeDataSource.getPassword());
+		
+		FakeJMSBroker fakeJMSBroker = applicationContext.getBean(FakeJMSBroker.class);
+		System.out.println(fakeJMSBroker.getUser());
+		
+		Properties properties = System.getProperties();
+		System.out.print(properties);
+		
 		
 	}
 

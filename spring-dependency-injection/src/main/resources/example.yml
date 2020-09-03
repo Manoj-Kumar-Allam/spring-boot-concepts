@@ -1,0 +1,40 @@
+# this is a comment
+
+name: Manoj
+
+#list
+names: #Comment
+  - John
+  - Paul
+  - Bush
+
+pound_sign: "#"
+
+# Complex Objects
+book:
+  author: Manoj
+  publisher: vgs
+  
+# Boolean types (true, True, yes all are going to be evaluated as true)
+truth: yes
+more_truth: True;
+trust: true
+
+#false, False, no all going to be evaluated as false
+negative: false
+
+#when you special characters in string like ' or : you need wrap values in ""
+
+name_string: "Manoj Kumar's Book"
+
+#when you want include new line in between the sentences use |
+include_new_line: |
+  I am manoj
+  kumar
+  allam
+
+#when you don't want include new line in between the sentences use >
+discard_new_line: >
+  I am a 
+  single 
+  line

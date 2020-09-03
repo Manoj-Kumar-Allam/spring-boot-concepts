@@ -1,0 +1,12 @@
+ma:
+  user: Manoj
+  password: Kumar_12
+  dburl: mysql
+---
+spring:
+  profiles: ES  
+ma:
+  user: Manoj
+  password: Kumar_ram
+
+  
