@@ -267,3 +267,7 @@ discard_new_line: >
 
 Please find Sample configurations
 
+We can listen to application context activities by implementing ApplicationListener<ContextRefreshedEvent>.
+Event raised when an ApplicationContext gets initialized or refreshed.
+
+
